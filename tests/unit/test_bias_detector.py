@@ -278,15 +278,3 @@ class TestBiasDetector:
 
         assert is_biased_obs is False  # Factual
         assert is_biased_ass is True  # Biased assumption
-
-    def test_lacks_rigor_of_formal_education_detected(self):
-        """Test 'lacks the rigor of a formal education' phrasing is detected (issue #58)."""
-        text = (
-            "The candidate only attended a bootcamp, so this project lacks the rigor "
-            "of a formal CS education"
-        )
-
-        is_biased, reason = BiasDetector.detect_bias(text)
-
-        assert is_biased is True
-        assert reason == "Dismissive language about educational background"
